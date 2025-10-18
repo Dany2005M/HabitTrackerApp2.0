@@ -1,59 +1,77 @@
 package com.github.dany2005m.habittracker;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.sql.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class HabitManager {
     private final ArrayList<Habit> habits = new ArrayList<>();
 
-    public void saveToFile(String fileName) {
-        try(FileWriter writer = new FileWriter(fileName)){
-            writer.write(dayCounter + "\n");
-            for(Habit habit : habits){
-                writer.write(habit.getName() + "," +
-                                habit.isDone() + "," +
-                                habit.getStreak() + "," +
-                                habit.getTotalDone() + "\n");
+    public void saveToDatabase() {
+        String clearSql = "DELETE FROM habits;";
+        String sql = "INSERT INTO habits (name, is_done, streak, total_done) VALUES(?,?,?,?)";
+
+        try (Connection connection = DatabaseManager.connect();
+             Statement clearStatement= connection.createStatement();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            clearStatement.executeUpdate(clearSql);
+
+            for (Habit habit : habits) {
+                preparedStatement.setString(1, habit.getName());
+                preparedStatement.setBoolean(2, habit.isDone());
+                preparedStatement.setInt(3, habit.getStreak());
+                preparedStatement.setInt(4, habit.getTotalDone());
+                preparedStatement.executeUpdate();
             }
-            System.out.println("Habits saved successfully!");
-        }
-        catch (IOException e){
-            System.out.println("Error saving habits to file: " + e.getMessage());
+        } catch (SQLException e) {
+            System.out.println("Error saving to database: " + e.getMessage());
         }
     }
 
-    public void loadFromFile(String fileName){
-        habits.clear();
-
-        try(Scanner scanner = new Scanner(new File(fileName))){
-            if(scanner.hasNextLine()){
-                dayCounter = Integer.parseInt(scanner.nextLine().trim());
-            }
-            while(scanner.hasNextLine()){
-                String input = scanner.nextLine();
-                String[] data = input.split(",");
-
-                if(data.length == 4){
-                    Habit habit = new Habit(data[0]);
-                    if(Boolean.parseBoolean(data[1])){
-                        habit.setDone();
-                    }habit.setStreak(Integer.parseInt(data[2]));
-
-
-                    habit.setTotalDone(Integer.parseInt(data[3]));
-
-
-                    habits.add(habit);
-                }
-
-            } System.out.println("Habit loaded successfully!");
-
-        }catch(IOException e){
-            System.out.println("Error loading habits from file: " + e.getMessage());
+    public void saveDayCounterToDatabase() {
+        String sql = "UPDATE day_counter SET value = ? WHERE key = 'dayCounter';";
+        try (Connection connection = DatabaseManager.connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, this.dayCounter);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error saving day counter: " + e.getMessage());
         }
+    }
+
+    public void loadFromDatabase() {
+        habits.clear();
+        String sql = "SELECT name, is_done, streak, total_done FROM habits";
+
+        try (Connection connection = DatabaseManager.connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+             ResultSet data = preparedStatement.executeQuery()) {
+
+            while (data.next()) {
+                Habit habit = new Habit(data.getString("name"));
+                if (data.getBoolean("is_done")) {
+                    habit.setDone();
+                }
+                habit.setStreak(data.getInt("streak"));
+                habit.setTotalDone(data.getInt("total_done"));
+                habits.add(habit);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error loading from database: " + e.getMessage());
+        }
+    }
+
+    public void loadDayCounterFromDatabase() {
+        String sql = "SELECT value FROM day_counter WHERE key = 'dayCounter';";
+        try(Connection connection = DatabaseManager.connect();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery()){
+            dayCounter = resultSet.getInt("value");
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error loading day counter: " + e.getMessage());
+        }
+
     }
 
     public void addHabit(String habitName){

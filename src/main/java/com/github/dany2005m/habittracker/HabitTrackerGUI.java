@@ -86,12 +86,14 @@ public class HabitTrackerGUI {
         });
 
         saveButton.addActionListener(e -> {
-            manager.saveToFile("habits.txt");
+            manager.saveToDatabase();
+            manager.saveDayCounterToDatabase();
             isLoaded.set(false);
         });
         loadButton.addActionListener(e -> {
             if(!isLoaded.get()) {
-                manager.loadFromFile("habits.txt");
+                manager.loadFromDatabase();
+                manager.loadDayCounterFromDatabase();
                 for (Habit habit : manager.getHabits()) {
                     if (habit.isDone()) {
                         listModel.addElement(habit.getName() + " ✅");
@@ -150,6 +152,8 @@ public class HabitTrackerGUI {
 
     }
     public static void main(String[] args) {
+        DatabaseManager.initializeDatabase();
+
         new HabitTrackerGUI();
     }
 
