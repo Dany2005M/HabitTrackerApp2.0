@@ -23,6 +23,10 @@ public class Habit {
         }
     }
 
+    public void setDoneForTest(){
+        done = true;
+    }
+
     public void unDone(){
         done = false;
     }
