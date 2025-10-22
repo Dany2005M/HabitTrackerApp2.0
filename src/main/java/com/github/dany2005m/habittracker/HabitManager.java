@@ -66,8 +66,9 @@ public class HabitManager {
         try(Connection connection = DatabaseManager.connect();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery()){
-            dayCounter = resultSet.getInt("value");
-            preparedStatement.executeUpdate();
+            if (resultSet.next()) {
+                dayCounter = resultSet.getInt("value");
+            }
         } catch (SQLException e) {
             System.out.println("Error loading day counter: " + e.getMessage());
         }
