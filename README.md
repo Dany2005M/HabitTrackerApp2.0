@@ -2,17 +2,8 @@ Java Habit Tracker
 
 A desktop application built with Java Swing for tracking daily habits. This project demonstrates a clean architecture (UI separated from logic), persistent database storage with JDBC, and professional project management using Maven and JUnit.
 
-<!--
-INSTRUCTIONS:
+<img width="512" height="512" alt="Screenshot 2025-10-23 at 12 37 02" src="https://github.com/user-attachments/assets/663c98c4-97bb-4554-90bf-5e6b106d494c" />
 
-Take a screenshot of your application running.
-
-Save it as "https://www.google.com/search?q=habittracker-gui.png" in the root folder of this project.
-
-Replace the line below with:
--->
-
-(Screenshot placeholder)
 
 Features
 
