@@ -16,69 +16,62 @@ Replace the line below with:
 
 Features
 
-Create & Remove Habits: Easily add new habits to track or remove old ones.
+    Create & Remove Habits: Easily add new habits to track or remove old ones.
 
-Daily Tracking: Mark habits as "Done" each day with a simple click.
+    Daily Tracking: Mark habits as "Done" each day with a simple click.
 
-Streak Counter: Automatically tracks your consecutive day streak for each habit.
+    Streak Counter: Automatically tracks your consecutive day streak for each habit.
 
-Weekly Summaries: View a periodic summary of your completion percentage and longest streaks.
+    Weekly Summaries: View a periodic summary of your completion percentage and longest streaks.
 
-Persistent Storage: All habits, streaks, and progress are saved to a local SQLite database, so your data is never lost between sessions.
+    Persistent Storage: All habits, streaks, and progress are saved to a local SQLite database, so your data is never lost between sessions.
 
-🛠️ Tech Stack
+Tech Stack
 
 This project showcases a range of professional-grade tools and practices:
 
-Language: Java 17
+    Language: Java 17
 
-UI: Java Swing (for the desktop GUI)
+    UI: Java Swing (for the desktop GUI)
 
-Build & Dependency Management: Apache Maven is used to manage the project lifecycle and dependencies.
+    Build & Dependency Management: Apache Maven is used to manage the project lifecycle and dependencies.
 
-Database: SQLite with the JDBC API for robust, persistent data storage.
+    Database: SQLite with the JDBC API for robust, persistent data storage.
 
-Testing: JUnit 5 is used for comprehensive unit and integration testing of the core application logic and database interactions.
+    Testing: JUnit 5 is used for comprehensive unit and integration testing of the core application logic and database interactions.
 
 How to Run
 
-Prerequisites
+    Prerequisites
 
-Java JDK 17 or newer must be installed on your system.
+    Java JDK 17 or newer must be installed on your system.
 
 Option 1: Run the Executable JAR
 
-This is the simplest way to run the application.
+        This is the simplest way to run the application.
 
-Navigate to the Releases page of this repository.
-(Instruction: You'll need to create this release page on GitHub and upload your JAR file from the target folder for this link to work.)
 
-Download the latest HabitTrackerApp-1.0-SNAPSHOT.jar file.
-
-Open your terminal, navigate to the download location, and run the following command:
-
-java -jar HabitTrackerApp-1.0-SNAPSHOT.jar
 
 
 Option 2: Build from Source
 
-You can build the project from the source code using Maven.
+        You can build the project from the source code using Maven.
 
-Clone this repository:
+        Clone this repository:
 
-git clone [https://github.com/Dany2005M/HabitTrackerApp2.0.git](https://github.com/Dany2005M/HabitTrackerApp2.0.git)
-
-
-Navigate into the project directory:
-
-cd HabitTrackerApp2.0
+        git clone [https://github.com/Dany2005M/HabitTrackerApp2.0.git](https://github.com/Dany2005M/HabitTrackerApp2.0.git)
 
 
-Build the project and run all tests using Maven:
+        Navigate into the project directory:
 
-mvn package
+        cd HabitTrackerApp2.0
 
 
-Once the build is complete, run the newly created JAR file from the target directory:
+        Build the project and run all tests using Maven:
 
-java -jar target/HabitTrackerApp-1.0-SNAPSHOT.jar
+        mvn package
+
+
+        Once the build is complete, run the newly created JAR file from the target directory:
+
+        java -jar target/HabitTrackerApp-1.0-SNAPSHOT.jar
