@@ -4,8 +4,7 @@ A desktop application built with Java Swing for tracking daily habits. This proj
 
 <img width="876" height="648" alt="Screenshot 2025-10-24 at 07 59 34" src="https://github.com/user-attachments/assets/f6a39f68-d280-4900-a37d-a957d5cceff0" />
 
-
-Features
+## Features
 
     Create & Remove Habits: Easily add new habits to track or remove old ones.
 
@@ -17,9 +16,9 @@ Features
 
     Persistent Storage: All habits, streaks, and progress are saved to a local SQLite database, so your data is never lost between sessions.
 
-Tech Stack
+## Tech Stack
 
-This project showcases a range of professional-grade tools and practices:
+### This project showcases a range of professional-grade tools and practices:
 
     Language: Java 17
 
@@ -31,13 +30,13 @@ This project showcases a range of professional-grade tools and practices:
 
     Testing: JUnit 5 is used for comprehensive unit and integration testing of the core application logic and database interactions.
 
-How to Run
+### How to Run
 
     Prerequisites
 
-    Java JDK 17 or newer must be installed on your system.
+        Java JDK 17 or newer must be installed on your system.
 
-Option 1: Run the Executable JAR
+### Option 1: Run the Executable JAR
 
     Navigate to the Releases page of this repository.
     
@@ -47,7 +46,7 @@ Option 1: Run the Executable JAR
 
         java -jar HabitTrackerApp-1.0-SNAPSHOT.jar
 
-Option 2: Build from Source
+### Option 2: Build from Source
 
         You can build the project from the source code using Maven.
 
