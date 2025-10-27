@@ -40,11 +40,11 @@ A desktop application built with Java Swing for tracking daily habits. This proj
 
     Navigate to the Releases page of this repository.
     
-    Download the latest HabitTrackerApp-1.0-SNAPSHOT.jar file.
+    Download the HabitTrackerApp-1.0-SNAPSHOT-jar-with-dependencies.jar file.
 
     Open your terminal, navigate to the download location, and run the following command:
 
-        java -jar HabitTrackerApp-1.0-SNAPSHOT.jar
+        java -jar HabitTrackerApp-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 ### Option 2: Build from Source
 
@@ -66,4 +66,4 @@ git clone [https://github.com/Dany2005M/HabittTrackerApp2.0.git](https://github.
 
         Once the build is complete, run the newly created JAR file from the target directory:
 
-        java -jar target/HabitTrackerApp-1.0-SNAPSHOT.jar
+        java -jar target/HabitTrackerApp-1.0-SNAPSHOT-jar-with-dependencies.jar
