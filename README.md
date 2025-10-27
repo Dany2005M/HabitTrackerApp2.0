@@ -52,8 +52,7 @@ A desktop application built with Java Swing for tracking daily habits. This proj
 
         Clone this repository:
 
-        git clone [https://github.com/Dany2005M/HabitTrackerApp2.0.git](https://github.com/Dany2005M/HabitTrackerApp2.0.git)
-
+git clone [https://github.com/Dany2005M/HabittTrackerApp2.0.git](https://github.com/Dany2005M/HabittTrackerApp2.0.git)
 
         Navigate into the project directory:
 
